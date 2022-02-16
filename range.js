@@ -1,12 +1,15 @@
 function solution(array, commands) {
+  let result = [];
   for (let i = 0; i < commands.length; i++) {
-    let result = [];
-    let start = commands[i][0];
-    let end = commands[i][1];
-    let k = commands[i][2];
-    result = result.push(array.slice(start, end + 1).sort()[k + 1]);
-    return result;
+    let eachCommand = commands[i];
+    // slice한 뒤 오름차순 정렬
+    let finalArray = array.slice(eachCommand[0] - 1, eachCommand[1]).sort();
+    // k번째 수 구하기
+    let answer = finalArray[eachCommand[2] - 1];
+    // result array에 하나씩 추가하기
+    result.push(answer);
   }
+  return result;
 }
 
 function solution(array, commands) {
