@@ -1,10 +1,13 @@
 function solution(array, commands) {
   let result = [];
-  for (let a = 0; a < commands.length; a++) {
-    let i = commands[a][a];
-    let j = commands[a][a + 1];
-    let k = commands[a][a + 2];
-    result = result.push(array.slice(i, j + 1).sort()[k]);
-    return result;
+  for (let i = 0; i < commands.length; i++) {
+    let eachCommand = commands[i];
+    // slice한 뒤 오름차순 정렬
+    let finalArray = array.slice(eachCommand[0] - 1, eachCommand[1]).sort();
+    // k번째 수 구하기
+    let answer = finalArray[eachCommand[2] - 1];
+    // result array에 하나씩 추가하기
+    result.push(answer);
   }
+  return result;
 }
